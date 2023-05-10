@@ -1,0 +1,21 @@
+.header__button {
+  height: 20px;
+  margin: 0 auto;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.header__button:hover {
+  opacity: 0.6;
+}
+
+/* header__button-logreg {
+  padding-right: 30px;
+  margin: 0;
+}. */

@@ -1,0 +1,11 @@
+.infoTooltip__container {
+    padding: 60px ;
+    z-index: 344;
+
+}
+
+.infoTooltip__title {
+    padding-top: 32px;
+    padding-bottom: 0;
+    text-align: center;
+}
