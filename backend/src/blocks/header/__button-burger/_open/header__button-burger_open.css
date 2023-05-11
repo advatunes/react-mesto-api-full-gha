@@ -1,6 +1,0 @@
-.header__button-burger_open {
-  background-image: url(../../../../images/close-icon.svg);
-  width: 20px;
-  height: 20px;
-  transition: background-image .3s;
-}
