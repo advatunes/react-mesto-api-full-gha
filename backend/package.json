@@ -8,17 +8,12 @@
     "start": "node app.js",
     "lint": "npx eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/advatunes/express-mesto-gha.git"
-  },
+ 
   "keywords": [],
   "author": "dmitriy nikonov",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/advatunes/express-mesto-gha/issues"
-  },
-  "homepage": "https://github.com/advatunes/express-mesto-gha#readme",
+
+
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
