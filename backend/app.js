@@ -22,7 +22,11 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true,
 });
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://advatunes.mesto.nomoredomains.monster',
+  credentials: true
+}));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
