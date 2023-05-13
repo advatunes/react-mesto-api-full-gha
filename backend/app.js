@@ -22,6 +22,8 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true,
 });
 
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,7 +35,7 @@ app.get("/crash-test", () => {
   }, 0);
 });
 
-app.use(cors({ origin: "*", credentials: true }));
+
 
 app.use(loginRouter);
 app.use(createUserRouter);
