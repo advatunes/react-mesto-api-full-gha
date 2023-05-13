@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const { errors } = require("celebrate");
 const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
-const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors');
+const { requestLogger, errorLogger } = require("./middlewares/logger");
+const cors = require("cors");
 
 const {
   userRouter,
@@ -27,13 +27,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
+app.get("/crash-test", () => {
   setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
+    throw new Error("Сервер сейчас упадёт");
   }, 0);
 });
 
-app.use(cors());
+app.use(cors({ origin: "*", credentials: true }));
 
 app.use(loginRouter);
 app.use(createUserRouter);
