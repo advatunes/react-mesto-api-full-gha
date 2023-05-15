@@ -28,6 +28,7 @@ app.use(cors({
   origin: 'https://advatunes.mesto.nomoredomains.monster',
   credentials: true
 }));
+app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
