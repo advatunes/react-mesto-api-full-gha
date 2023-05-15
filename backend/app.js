@@ -25,10 +25,11 @@ mongoose.connect(config.mongoUri, {
 
 
 app.use(cors({
-  origin: 'https://advatunes.mesto.nomoredomains.monster',
+  origin: ['https://advatunes.mesto.nomoredomains.monster', 'http://localhost:3000'],
   credentials: true
 }));
 app.options("*", cors());
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
