@@ -17,6 +17,12 @@ module.exports.login = (req, res, next) => {
           expiresIn: "7d",
         }
       );
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
+
       res.send({ token });
     })
     .catch(next);

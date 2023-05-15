@@ -5,6 +5,7 @@ const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const {
   userRouter,
@@ -40,6 +41,7 @@ app.get("/crash-test", () => {
 });
 
 
+app.use(cookieParser());
 
 app.use(loginRouter);
 app.use(createUserRouter);

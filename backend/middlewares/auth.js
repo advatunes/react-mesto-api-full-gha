@@ -4,17 +4,17 @@ const { STATUS_INVALID_CREDENTIALS } = require("../utils/errors");
 const {  JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
+  const { cookies } = req;
 
-  if (!authorization || !authorization.startsWith("Bearer ")) {
+  if (!cookies || !cookies.jwt) {
     return next(new STATUS_INVALID_CREDENTIALS("Необходима авторизация"));
   }
 
-  const token = authorization.replace("Bearer ", "");
+  const token = cookies.jwt;
   let payload;
 
   try {
-    payload = jwt.verify(token, JWT_SECRET );
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     return next(new STATUS_INVALID_CREDENTIALS("Необходима авторизация"));
   }
@@ -23,3 +23,4 @@ module.exports = (req, res, next) => {
 
   next();
 };
+
