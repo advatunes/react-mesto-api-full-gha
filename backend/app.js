@@ -23,11 +23,16 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true,
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://advatunes.mesto.nomoredomains.monster');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 app.use(cors({
   origin: 'https://advatunes.mesto.nomoredomains.monster',
   credentials: true
 }));
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,7 +44,6 @@ app.get("/crash-test", () => {
     throw new Error("Сервер сейчас упадёт");
   }, 0);
 });
-
 
 app.use(cookieParser());
 
