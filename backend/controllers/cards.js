@@ -15,7 +15,7 @@ module.exports.createCard = (req, res, next) => {
     owner,
     likes,
   })
-    .then((card) => res.send( card ))
+    .then((card) => res.send(card))
     .catch(next);
 };
 
@@ -23,7 +23,7 @@ module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate("owner")
     .populate("likes")
-    .then((card) => res.send( card ))
+    .then((card) => res.send(card))
     .catch(next);
 };
 
@@ -55,7 +55,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new STATUS_NOT_FOUND("Карточка не найдена");
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch(next);
 };
@@ -70,7 +70,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new STATUS_NOT_FOUND("Карточка не найдена");
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch(next);
 };
