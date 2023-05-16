@@ -12,12 +12,13 @@ module.exports = (req, res, next) => {
   const token = authorization.replace("Bearer ", "");
 
   try {
-    const payload = jwt.verify(token, config.JWT_SECRET);
+    const payload = jwt.verify(
+      token,
+      NODE_ENV === "production" ? JWT_SECRET : "dev-secret"
+    );
     req.user = payload;
     next();
   } catch (err) {
     return next(new STATUS_INVALID_CREDENTIALS("Необходима авторизация"));
   }
 };
-
-

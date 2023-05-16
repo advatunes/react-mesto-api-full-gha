@@ -1,12 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { errors } = require("celebrate");
-require('dotenv').config(); 
+require('dotenv').config();
 const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const cors = require("cors");
-const cookieParser = require('cookie-parser');
 
 const {
   userRouter,
@@ -19,10 +18,14 @@ const app = express();
 
 const auth = require("./middlewares/auth");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 mongoose.connect(config.mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 
 app.use(cors({
@@ -32,10 +35,6 @@ app.use(cors({
 app.options("*", cors());
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(cookieParser());
 
 app.use(requestLogger);
 
