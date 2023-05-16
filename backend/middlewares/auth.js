@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { STATUS_INVALID_CREDENTIALS } = require("../utils/errors");
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
@@ -11,7 +12,10 @@ module.exports = (req, res, next) => {
   const token = authorization.replace("Bearer ", "");
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const payload = jwt.verify(
+      token,
+      NODE_ENV === "production" ? JWT_SECRET : "dev-secret"
+    );
     req.user = payload;
     next();
   } catch (err) {
