@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { errors } = require("celebrate");
+require('dotenv').config(); 
 const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
