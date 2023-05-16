@@ -15,7 +15,7 @@ module.exports.createCard = (req, res, next) => {
     owner,
     likes,
   })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send( card ))
     .catch(next);
 };
 
@@ -23,7 +23,7 @@ module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate("owner")
     .populate("likes")
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send( card ))
     .catch(next);
 };
 
