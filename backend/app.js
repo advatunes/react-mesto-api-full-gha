@@ -23,6 +23,9 @@ app.use(requestLogger);
 app.use(cors({
   origin: [
     "https://advatunes.mesto.nomoredomains.monster",
+    "http://advatunes.mesto.nomoredomains.monster",
+    "https://api.advatunes.mesto.nomoredomains.monster",
+    "http://api.advatunes.mesto.nomoredomains.monster",
     "http://localhost:3000",
   ],
   credentials: true,
