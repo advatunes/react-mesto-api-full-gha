@@ -1,15 +1,17 @@
 const router = require("express").Router();
 const auth = require("./middlewares/auth");
+const cors = require("cors");
 
 const userRouter = require("./userRouter");
 const cardRouter = require("./cardRouter");
 const loginRouter = require("./loginRouter");
 const createUserRouter = require("./createUserRouter");
 
-router.use("/users", auth, userRouter);
-router.use("/cards", auth, cardRouter);
+// Применяем cors к каждому маршруту
+router.use("/users", cors(), auth, userRouter);
+router.use("/cards", cors(), auth, cardRouter);
 
-router.use("/login", loginRouter);
-router.use("/signup", createUserRouter);
+router.use("/login", cors(), loginRouter);
+router.use("/signup", cors(), createUserRouter);
 
 module.exports = router;
