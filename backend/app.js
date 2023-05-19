@@ -8,7 +8,7 @@ const cors = require("cors");
 
 const router = require("./routes");
 
-const app = express();
+const app = express(router);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,7 +32,7 @@ app.get("/crash-test", () => {
   }, 0);
 });
 
-app.use("/", router);
+app.use(router);
 
 app.use((req, res, next) => {
   next(new STATUS_NOT_FOUND("Запрашиваемый ресурс не найден"));
