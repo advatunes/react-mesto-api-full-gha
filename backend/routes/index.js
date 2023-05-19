@@ -1,11 +1,17 @@
-const { userRouter } = require("./users");
-const { cardRouter } = require("./cards");
-const { loginRouter } = require("./login");
-const { createUserRouter } = require("./createUser");
+const router = require("express").Router();
+const auth = require("./middlewares/auth");
 
-module.exports = {
-  userRouter,
-  cardRouter,
-  loginRouter,
-  createUserRouter,
-};
+const userRouter = require("./userRouter");
+const cardRouter = require("./cardRouter");
+const loginRouter = require("./loginRouter");
+const createUserRouter = require("./createUserRouter");
+
+
+
+router.use("/users", auth, userRouter);
+router.use("/cards", auth, cardRouter);
+
+router.use("/login", loginRouter);
+router.use("/signup", createUserRouter);
+
+module.exports = router;
