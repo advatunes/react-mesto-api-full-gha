@@ -18,18 +18,13 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true,
 });
 
-app.use(requestLogger);
-
 app.use(cors({
-  origin: [
-    "https://advatunes.mesto.nomoredomains.monster",
-    "http://advatunes.mesto.nomoredomains.monster",
-    "https://api.advatunes.mesto.nomoredomains.monster",
-    "http://api.advatunes.mesto.nomoredomains.monster",
-    "http://localhost:3000",
-  ],
-  credentials: true,
+  origin: ['https://advatunes.mesto.nomoredomains.monster', 'http://localhost:3000'],
+  credentials: true
 }));
+app.options("*", cors());
+
+app.use(requestLogger);
 
 app.get("/crash-test", () => {
   setTimeout(() => {
