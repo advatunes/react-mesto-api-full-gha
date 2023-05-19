@@ -18,6 +18,8 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true,
 });
 
+app.use(requestLogger);
+
 app.use(cors({
   origin: [
     "https://advatunes.mesto.nomoredomains.monster",
@@ -25,8 +27,6 @@ app.use(cors({
   ],
   credentials: true,
 }));
-
-app.use(requestLogger);
 
 app.get("/crash-test", () => {
   setTimeout(() => {
