@@ -6,8 +6,6 @@ const cardRouter = require("./cardRouter");
 const loginRouter = require("./loginRouter");
 const createUserRouter = require("./createUserRouter");
 
-
-
 router.use("/users", auth, userRouter);
 router.use("/cards", auth, cardRouter);
 
