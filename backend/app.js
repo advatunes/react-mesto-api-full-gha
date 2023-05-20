@@ -6,8 +6,16 @@ const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const cors = require("cors");
 
-const router = require("./routes");
+
 const auth = require("./middlewares/auth");
+
+const {
+  userRouter,
+  cardRouter,
+  loginRouter,
+  createUserRouter,
+} = require("./routes");
+
 const app = express();
 
 app.use(express.json());
