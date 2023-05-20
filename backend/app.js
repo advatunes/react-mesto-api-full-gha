@@ -4,8 +4,7 @@ const { errors } = require("celebrate");
 const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
-const cors = require("cors");
-
+const cors = require('./middlewares/cors');
 
 const auth = require("./middlewares/auth");
 
@@ -26,11 +25,7 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true,
 });
 
-app.use(cors({
-  origin: ['https://advatunes.mesto.nomoredomains.monster', 'http://localhost:3000'],
-  credentials: true
-}));
-app.options("*", cors());
+app.use(cors);
 
 app.use(requestLogger);
 
