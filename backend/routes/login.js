@@ -3,7 +3,7 @@ const { celebrate, Joi } = require("celebrate");
 const { login } = require("../controllers/login");
 
 loginRouter.post(
-  "/signin",
+  "/signizzn",
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),
