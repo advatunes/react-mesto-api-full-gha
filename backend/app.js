@@ -7,7 +7,7 @@ const { requestLogger, errorLogger } = require("./middlewares/logger");
 const cors = require("cors");
 
 const router = require("./routes");
-
+const auth = require("./middlewares/auth");
 const app = express();
 
 app.use(express.json());
@@ -32,7 +32,12 @@ app.get("/crash-test", () => {
   }, 0);
 });
 
-app.use(router);
+app.use(loginRouter);
+app.use(createUserRouter);
+
+app.use("/users", auth, userRouter);
+app.use("/cards", auth, cardRouter);
+
 
 app.use((req, res, next) => {
   next(new STATUS_NOT_FOUND("Запрашиваемый ресурс не найден"));
