@@ -13,7 +13,7 @@ const {
   createUserRouter,
 } = require("./routes");
 
-const app = express(router);
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
