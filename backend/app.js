@@ -64,5 +64,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(config.port, () => {
-  console.log(`App listening on port ${config.port}`);
+  console.log(`App listening on port ${config.port}`);gi
 });
