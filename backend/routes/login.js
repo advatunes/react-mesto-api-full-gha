@@ -10,6 +10,6 @@ loginRouter.post(
       password: Joi.string().required().min(8),
     }),
   }),
-  login
+  login,
 );
-module.exports = loginRouter;
+module.exports = { loginRouter };
