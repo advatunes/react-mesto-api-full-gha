@@ -19,7 +19,7 @@ userRouter.get(
       userId: Joi.string().hex().length(24).required(),
     }),
   }),
-  getUserById,
+  getUserById
 );
 
 userRouter.patch(
@@ -30,7 +30,7 @@ userRouter.patch(
       about: Joi.string().min(2).max(30).required(),
     }),
   }),
-  updateProfile,
+  updateProfile
 );
 
 userRouter.patch(
@@ -40,7 +40,7 @@ userRouter.patch(
       avatar: Joi.string().pattern(/^https?:\/\/(www\.)?\w+\.\w{2,}\/?.*$/i),
     }),
   }),
-  updateAvatar,
+  updateAvatar
 );
 
-module.exports = { userRouter };
+module.exports = userRouter;
