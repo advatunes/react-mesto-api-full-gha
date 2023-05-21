@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
       NODE_ENV === "production" ? JWT_SECRET : "dev-secret",
     );
     req.user = payload;
-    next();
+    return next();
   } catch (err) {
     return next(new STATUS_INVALID_CREDENTIALS("Необходима авторизация"));
   }
