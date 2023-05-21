@@ -5,7 +5,7 @@ const cors = require("cors");
 const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
-const auth = require("./middlewares/auth");
+
 const {
   userRouter,
   cardRouter,
@@ -14,6 +14,8 @@ const {
 } = require("./routes");
 
 const app = express();
+
+const auth = require("./middlewares/auth");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
