@@ -27,13 +27,13 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((user) => res.send( user ))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
 module.exports.getUserInfo = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => res.send( user ))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -58,7 +58,7 @@ module.exports.updateProfile = (req, res, next) => {
       runValidators: true,
     },
   )
-    .then((user) => res.send( user ))
+    .then((user) => res.send(user))
 
     .catch(next);
 };
@@ -73,7 +73,7 @@ module.exports.updateAvatar = (req, res, next) => {
       runValidators: true,
     },
   )
-    .then((user) => res.send( user ))
+    .then((user) => res.send(user))
 
     .catch(next);
 };

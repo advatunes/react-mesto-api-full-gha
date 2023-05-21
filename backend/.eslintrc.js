@@ -15,5 +15,6 @@ module.exports = {
     "max-classes-per-file": ["error", 10],
     "no-underscore-dangle": ["error", { allow: ["_id", "foo_"] }],
   },
-   ignorePatterns: ["node_modules/"],
+  settings: {},
+  ignorePatterns: ["node_modules/"],
 };

@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { errors } = require("celebrate");
+const cors = require("cors");
 const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
-const cors = require("cors");
 
 const auth = require("./middlewares/auth");
 
@@ -26,11 +26,10 @@ mongoose.connect(config.mongoUri, {
 });
 
 app.use(cors({
-  origin: ['https://advatunes.mesto.nomoredomains.monster', 'http://localhost:3000'],
-  credentials: true
+  origin: ["https://advatunes.mesto.nomoredomains.monster", "http://localhost:3000"],
+  credentials: true,
 }));
 app.options("*", cors());
-
 
 app.use(requestLogger);
 
@@ -45,7 +44,6 @@ app.use(createUserRouter);
 
 app.use("/users", auth, userRouter);
 app.use("/cards", auth, cardRouter);
-
 
 app.use((req, res, next) => {
   next(new STATUS_NOT_FOUND("Запрашиваемый ресурс не найден"));
@@ -69,5 +67,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(config.port, () => {
-  console.log(`App listening on port ${config.port}`);gi
+  console.log(`App listening on port ${config.port}`);
 });

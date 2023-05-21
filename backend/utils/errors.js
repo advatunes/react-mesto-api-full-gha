@@ -12,7 +12,6 @@ class STATUS_BAD_REQUEST extends Error {
   }
 }
 
-
 class STATUS_INVALID_CREDENTIALS extends Error {
   constructor(message) {
     super(message);

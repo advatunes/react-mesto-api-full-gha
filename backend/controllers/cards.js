@@ -49,7 +49,7 @@ module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
-    { new: true }
+    { new: true },
   )
     .populate("likes")
     .then((card) => {
@@ -65,9 +65,9 @@ module.exports.dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: req.user._id } },
-    { new: true }
+    { new: true },
   )
-  .populate("likes")
+    .populate("likes")
     .then((card) => {
       if (!card) {
         throw new STATUS_NOT_FOUND("Карточка не найдена");
