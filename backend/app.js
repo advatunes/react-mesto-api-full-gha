@@ -6,9 +6,7 @@ const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 
-const auth = require("./middlewares/auth");
-
-const routes = require("./routes");
+const router = require("./routes");
 
 const app = express();
 
@@ -34,7 +32,7 @@ app.get("/crash-test", () => {
   }, 0);
 });
 
-app.use("/", routes);
+app.use("/", router);
 
 app.use((req, res, next) => {
   next(new STATUS_NOT_FOUND("Запрашиваемый ресурс не найден"));
