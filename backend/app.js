@@ -6,16 +6,11 @@ const config = require("./config");
 const { STATUS_NOT_FOUND } = require("./utils/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 
-const {
-  userRouter,
-  cardRouter,
-  loginRouter,
-  createUserRouter,
-} = require("./routes");
+const router = require("./routes");
 
 const app = express();
 
-const auth = require("./middlewares/auth");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,11 +34,7 @@ app.get("/crash-test", () => {
   }, 0);
 });
 
-app.use(loginRouter);
-app.use(createUserRouter);
-
-app.use("/users", auth, userRouter);
-app.use("/cards", auth, cardRouter);
+app.use(router);
 
 app.use((req, res, next) => {
   next(new STATUS_NOT_FOUND("Запрашиваемый ресурс не найден"));
